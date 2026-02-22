@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Metal Mania';
+    src: url('MetalMania-Regular.eot');
+    src: local('Metal Mania'), local('MetalMania-Regular'),
+        url('MetalMania-Regular.eot?#iefix') format('embedded-opentype'),
+        url('MetalMania-Regular.woff2') format('woff2'),
+        url('MetalMania-Regular.woff') format('woff'),
+        url('MetalMania-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+

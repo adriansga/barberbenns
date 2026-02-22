@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barber Benns – Fryzjer Męski Nowy Sącz | Umów się Online</title>
+    <meta name="description" content="Barber Benns – Nowy Sącz. Strzyżenie, golenie, pielęgnacja brody. Umów się online. Wałowa 6. Tel: 730 088 826.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== ZMIENNE ===== */
+        :root {
+            --primary: #3E2723;
+            --primary-glow: rgba(62, 39, 35, 0.5);
+            --primary-dark: #2D1B18;
+            --secondary: #0a0a0a;
+            --accent-navy: #1a237e;
+            --accent-red: #c62828;
+            --accent-red-glow: rgba(198, 40, 40, 0.4);
+            --bg-dark: #0a0a0a;
+            --bg-light: #1a1a1a;
+            --text: #e0e0e0;
+            --text-light: #999;
+            --white: #fff;
+            --radius: 10px;
+            --shadow: 0 8px 32px rgba(0,0,0,0.4);
+            --transition: 0.3s ease;
+        }
+
+        /* ===== RESET ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--text); background: var(--white); }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* ===== ANIMACJE ===== */
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 var(--accent-red-glow); }
+            50% { box-shadow: 0 0 0 18px rgba(198,40,40,0); }
+        }
+        @keyframes slideInRight {
+            from { transform: translateX(120%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* ===== HELPERS ===== */
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .section-pad { padding: 5rem 0; }
+        .section-title { text-align: center; margin-bottom: 3rem; }
+        .section-title h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--secondary); display: inline-block; position: relative; padding-bottom: 12px; }
+        .section-title h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 70px; height: 3px; background: var(--primary); border-radius: 2px; }
+        .section-title p { margin-top: 1rem; color: var(--text-light); font-size: 1.05rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .section-dark .section-title h2 { color: var(--white); }
+
+        /* ===== CTA BUTTONS ===== */
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            color: var(--secondary);
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            border: 2px solid var(--primary);
+            cursor: pointer;
+            transition: var(--transition);
+            animation: pulse 2.5s infinite;
+            text-transform: uppercase;
+        }
+        .cta-button:hover { background: var(--primary-dark); border-color: var(--primary-dark); transform: translateY(-3px); box-shadow: 0 12px 28px var(--primary-glow); }
+        .cta-button.outline { background: transparent; color: var(--primary); animation: none; }
+        .cta-button.outline:hover { background: var(--primary); color: var(--secondary); }
+        .cta-button.dark-bg { color: var(--secondary); }
+
+        /* ===== HEADER ===== */
+        header {
+            background: var(--secondary);
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; }
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo img { height: 48px; object-fit: contain; }
+        .logo-text { font-size: 1.3rem; font-weight: 800; color: var(--primary); letter-spacing: 1px; }
+        nav ul { display: flex; gap: 2rem; }
+        nav a { color: #ddd; font-weight: 500; font-size: 0.95rem; transition: var(--transition); letter-spacing: 0.3px; }
+        nav a:hover { color: var(--primary); }
+        .nav-cta { background: var(--primary) !important; color: var(--secondary) !important; padding: 8px 20px; border-radius: 50px; font-weight: 700 !important; animation: pulse 2.5s infinite; }
+        .mobile-menu-btn { display: none; background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.72)),
+                        url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+            color: var(--white);
+            position: relative;
+        }
+        .hero-content { max-width: 860px; padding: 0 20px; animation: fadeInUp 0.9s ease; }
+        .hero-badge { display: inline-block; background: var(--primary); color: var(--secondary); padding: 6px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px; }
+        .hero h1 { font-size: clamp(2rem, 5.5vw, 3.8rem); line-height: 1.18; margin-bottom: 1.2rem; font-weight: 800; }
+        .hero h1 span { color: var(--primary); }
+        .hero p { font-size: clamp(1rem, 2.5vw, 1.3rem); margin-bottom: 2.5rem; opacity: 0.88; max-width: 680px; margin-left: auto; margin-right: auto; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        /* ===== TRUST BAR ===== */
+        .trust-bar {
+            background: var(--primary);
+            padding: 14px 0;
+        }
+        .trust-bar-inner { display: flex; justify-content: center; align-items: center; gap: 3rem; flex-wrap: wrap; }
+        .trust-item { display: flex; align-items: center; gap: 8px; color: var(--secondary); font-weight: 700; font-size: 0.95rem; }
+        .trust-item i { font-size: 1.1rem; }
+
+        /* ===== SOCIAL PROOF TOAST ===== */
+        .toast-container {
+            position: fixed;
+            bottom: 80px;
+            left: 20px;
+            z-index: 9998;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .toast {
+            background: var(--white);
+            border-left: 4px solid var(--primary);
+            padding: 12px 18px;
+            border-radius: 8px;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 300px;
+            animation: slideInRight 0.4s ease;
+            font-size: 0.88rem;
+        }
+        .toast-icon { font-size: 1.4rem; }
+        .toast-text { color: var(--text); }
+        .toast-text strong { color: var(--secondary); }
+        .toast-time { font-size: 0.75rem; color: var(--text-light); margin-top: 2px; }
+
+        /* ===== FLOATING PHONE BUTTON ===== */
+        .fab-phone {
+            position: fixed;
+            bottom: 30px;
+            right: 25px;
+            width: 62px;
+            height: 62px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            box-shadow: 0 6px 24px var(--primary-glow);
+            animation: pulse 2s infinite;
+            transition: var(--transition);
+        }
+        .fab-phone:hover { transform: scale(1.12); }
+        .fab-phone i { font-size: 1.5rem; color: var(--secondary); }
+        .fab-label {
+            position: fixed;
+            bottom: 41px;
+            right: 95px;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 9999;
+            opacity: 0;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .fab-phone:hover + .fab-label { opacity: 1; }
+
+        /* ===== STICKY CTA MOBILE ===== */
+        .sticky-mobile-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--secondary);
+            padding: 12px 20px;
+            z-index: 8999;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+            gap: 10px;
+        }
+        .sticky-mobile-cta a { flex: 1; text-align: center; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 0.9rem; }
+        .sticky-cta-call { background: var(--primary); color: var(--secondary); }
+        .sticky-cta-book { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
+
+        /* ===== COOKIE BANNER ===== */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 18px 20px;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+            border-top: 3px solid var(--primary);
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+        }
+        .cookie-banner.show { transform: translateY(0); }
+        .cookie-text { flex: 1; font-size: 0.9rem; opacity: 0.9; }
+        .cookie-text a { color: var(--primary); text-decoration: underline; }
+        .cookie-btn { padding: 10px 24px; border-radius: 50px; font-weight: 700; cursor: pointer; border: none; font-size: 0.9rem; }
+        .cookie-accept { background: var(--primary); color: var(--secondary); }
+        .cookie-decline { background: transparent; color: var(--white); border: 1px solid #555; }
+
+        /* ===== EXIT POPUP ===== */
+        .popup-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.75);
+            z-index: 10001;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .popup-overlay.show { display: flex; }
+        .popup-box {
+            background: var(--white);
+            border-radius: 16px;
+            max-width: 540px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            animation: fadeInUp 0.4s ease;
+        }
+        .popup-header { background: var(--secondary); padding: 24px; text-align: center; }
+        .popup-header .popup-emoji { font-size: 2.5rem; margin-bottom: 8px; }
+        .popup-header h3 { color: var(--primary); font-size: 1.5rem; font-weight: 800; }
+        .popup-body { padding: 28px; text-align: center; }
+        .popup-offer { font-size: 1.8rem; font-weight: 800; color: var(--secondary); margin-bottom: 0.5rem; }
+        .popup-offer span { color: var(--primary); }
+        .popup-sub { color: var(--text-light); margin-bottom: 1.5rem; }
+        .popup-form { display: flex; gap: 10px; margin-bottom: 1rem; }
+        .popup-form input { flex: 1; padding: 12px 16px; border: 2px solid #eee; border-radius: 8px; font-size: 0.95rem; outline: none; }
+        .popup-form input:focus { border-color: var(--primary); }
+        .popup-close { position: absolute; top: 12px; right: 16px; background: none; border: none; color: #aaa; font-size: 1.4rem; cursor: pointer; z-index: 1; }
+        .popup-close:hover { color: var(--secondary); }
+        .popup-skip { color: var(--text-light); font-size: 0.85rem; cursor: pointer; }
+        .popup-skip:hover { color: var(--text); }
+
+        /* ===== ABOUT / FOUNDER ===== */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .about-img-wrap { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+        .about-img-wrap img { width: 100%; height: 520px; object-fit: cover; }
+        .about-badge-float {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            background: var(--primary);
+            color: var(--secondary);
+            padding: 14px 20px;
+            border-radius: var(--radius);
+            font-weight: 800;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        .about-badge-float .badge-num { font-size: 2rem; line-height: 1; }
+        .about-badge-float .badge-txt { font-size: 0.8rem; }
+        .about-text h2 { font-size: 2rem; color: var(--secondary); margin-bottom: 1rem; }
+        .about-text h2 span { color: var(--primary); }
+        .about-text p { color: var(--text-light); margin-bottom: 1.2rem; line-height: 1.8; }
+        .founder-quote { border-left: 4px solid var(--primary); padding-left: 20px; margin: 1.5rem 0; font-style: italic; color: var(--text); font-size: 1.05rem; }
+        .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.8rem 0; }
+        .stat-box { text-align: center; background: var(--bg-light); border-radius: var(--radius); padding: 16px 10px; }
+        .stat-num { font-size: 1.8rem; font-weight: 800; color: var(--primary); }
+        .stat-label { font-size: 0.8rem; color: var(--text-light); }
+
+        /* ===== SERVICES ===== */
+        .services-section { background: var(--bg-light); }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .service-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+        .service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); border-bottom-color: var(--primary); }
+        .service-icon { width: 72px; height: 72px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem; }
+        .service-icon i { font-size: 1.7rem; color: var(--secondary); }
+        .service-card h3 { font-size: 1.2rem; color: var(--secondary); margin-bottom: 0.6rem; }
+        .service-card p { color: var(--text-light); font-size: 0.95rem; margin-bottom: 1rem; }
+        .service-price { font-size: 1.3rem; font-weight: 800; color: var(--primary); }
+
+        /* ===== CASE STUDIES ===== */
+        .case-studies { background: var(--secondary); }
+        .case-studies-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .case-card {
+            background: rgba(255,255,255,0.06);
+            border-radius: var(--radius);
+            padding: 2rem;
+            border: 1px solid rgba(212,175,55,0.2);
+            transition: var(--transition);
+        }
+        .case-card:hover { background: rgba(255,255,255,0.1); border-color: var(--primary); }
+        .case-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--primary); margin-bottom: 0.8rem; }
+        .case-title { font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 0.8rem; }
+        .case-desc { color: rgba(255,255,255,0.65); font-size: 0.95rem; margin-bottom: 1.5rem; }
+        .case-results { display: flex; gap: 1.5rem; }
+        .case-result-item { text-align: center; }
+        .case-result-num { font-size: 1.8rem; font-weight: 800; color: var(--primary); }
+        .case-result-label { font-size: 0.78rem; color: rgba(255,255,255,0.55); }
+
+        /* ===== PRICING ===== */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; align-items: start; }
+        .price-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 2px solid transparent;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .price-card:hover { border-color: var(--primary); transform: translateY(-6px); }
+        .price-card.popular { border-color: var(--primary); transform: scale(1.04); }
+        .popular-badge {
+            position: absolute;
+            top: 14px;
+            right: -22px;
+            background: var(--primary);
+            color: var(--secondary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 30px;
+            transform: rotate(45deg);
+        }
+        .price-plan { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-light); margin-bottom: 0.5rem; }
+        .price-name { font-size: 1.5rem; font-weight: 800; color: var(--secondary); margin-bottom: 1rem; }
+        .price-amount { font-size: 3rem; font-weight: 800; color: var(--primary); line-height: 1; }
+        .price-amount sup { font-size: 1.2rem; vertical-align: super; }
+        .price-period { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1.5rem; }
+        .price-features { text-align: left; margin-bottom: 2rem; }
+        .price-features li { padding: 8px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; gap: 8px; font-size: 0.95rem; color: var(--text); }
+        .price-features li i { color: var(--primary); font-size: 0.85rem; width: 16px; }
+
+        /* ===== ROI CALCULATOR ===== */
+        .roi-section { background: var(--bg-light); }
+        .roi-calc {
+            max-width: 680px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+        }
+        .roi-intro { text-align: center; margin-bottom: 2rem; }
+        .roi-intro p { color: var(--text-light); }
+        .roi-sliders { display: flex; flex-direction: column; gap: 1.8rem; margin-bottom: 2rem; }
+        .roi-field label { display: flex; justify-content: space-between; font-weight: 600; color: var(--secondary); margin-bottom: 8px; font-size: 0.95rem; }
+        .roi-field label span { color: var(--primary); font-weight: 700; }
+        input[type="range"] { width: 100%; accent-color: var(--primary); height: 6px; border-radius: 3px; cursor: pointer; }
+        .roi-result {
+            background: var(--secondary);
+            color: var(--white);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .roi-result-num { font-size: 2.8rem; font-weight: 800; color: var(--primary); }
+        .roi-result-label { font-size: 0.95rem; opacity: 0.75; margin-top: 4px; }
+        .roi-result-detail { margin-top: 1rem; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .roi-detail-item { background: rgba(255,255,255,0.07); border-radius: 8px; padding: 10px; }
+        .roi-detail-num { font-size: 1.3rem; font-weight: 700; color: var(--primary); }
+        .roi-detail-label { font-size: 0.75rem; opacity: 0.65; margin-top: 2px; }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-section { background: var(--secondary); }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .testimonial-card {
+            background: rgba(255,255,255,0.06);
+            border-radius: var(--radius);
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: var(--transition);
+        }
+        .testimonial-card:hover { border-color: rgba(212,175,55,0.4); background: rgba(255,255,255,0.09); }
+        .rating { color: var(--primary); font-size: 1.1rem; margin-bottom: 1rem; }
+        .testimonial-text { font-style: italic; color: rgba(255,255,255,0.8); margin-bottom: 1.2rem; line-height: 1.7; font-size: 0.97rem; }
+        .client-info { display: flex; align-items: center; gap: 12px; }
+        .client-avatar { width: 46px; height: 46px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--secondary); font-weight: 800; flex-shrink: 0; }
+        .client-name { font-weight: 700; color: var(--primary); font-size: 0.95rem; }
+        .client-result { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 2px; }
+
+        /* ===== PORTFOLIO ===== */
+        .portfolio-section { background: var(--white); }
+        .portfolio-filters { display: flex; justify-content: center; gap: 10px; margin-bottom: 2.5rem; flex-wrap: wrap; }
+        .filter-btn {
+            padding: 8px 22px;
+            border-radius: 50px;
+            background: var(--bg-light);
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+        .filter-btn.active, .filter-btn:hover { background: var(--primary); color: var(--secondary); border-color: var(--primary); }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; }
+        .portfolio-item {
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+            height: 260px;
+            cursor: pointer;
+        }
+        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .portfolio-item:hover img { transform: scale(1.08); }
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+            opacity: 0;
+            transition: var(--transition);
+            display: flex;
+            align-items: flex-end;
+            padding: 16px;
+        }
+        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+        .portfolio-label { color: var(--white); font-weight: 700; font-size: 0.95rem; }
+        .portfolio-cat { font-size: 0.78rem; color: var(--primary); }
+        .portfolio-item.hidden { display: none; }
+
+        /* ===== FAQ ===== */
+        .faq-section { background: var(--bg-light); }
+        .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+        .faq-item { background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+        .faq-question {
+            padding: 18px 24px;
+            font-weight: 700;
+            color: var(--secondary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+            user-select: none;
+        }
+        .faq-question:hover { color: var(--primary); }
+        .faq-icon { color: var(--primary); font-size: 0.9rem; transition: transform 0.3s; flex-shrink: 0; }
+        .faq-item.open .faq-icon { transform: rotate(180deg); }
+        .faq-answer { padding: 0 24px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; }
+        .faq-item.open .faq-answer { max-height: 200px; padding-bottom: 18px; }
+        .faq-answer p { color: var(--text-light); line-height: 1.7; font-size: 0.96rem; }
+
+        /* ===== CONTACT ===== */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+        .contact-info h3 { font-size: 1.8rem; color: var(--secondary); margin-bottom: 1.5rem; }
+        .contact-detail { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 1.5rem; }
+        .contact-icon { width: 50px; height: 50px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--secondary); font-size: 1.15rem; flex-shrink: 0; }
+        .contact-detail h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-light); margin-bottom: 3px; }
+        .contact-detail p { color: var(--secondary); font-weight: 500; }
+        .contact-detail a { color: var(--secondary); }
+        .contact-detail a:hover { color: var(--primary); }
+        .contact-map { margin-top: 1.5rem; border-radius: var(--radius); overflow: hidden; height: 200px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+        .contact-map iframe { width: 100%; height: 100%; border: 0; }
+        .contact-form-box { background: var(--white); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow); }
+        .contact-form-box h3 { font-size: 1.5rem; color: var(--secondary); margin-bottom: 1.5rem; }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; font-size: 0.88rem; font-weight: 600; color: var(--secondary); margin-bottom: 6px; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            outline: none;
+            color: var(--text);
+            background: var(--white);
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--primary); }
+        .form-group textarea { height: 120px; resize: vertical; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+        /* ===== FOOTER ===== */
+        footer { background: var(--secondary); color: var(--white); padding: 4rem 0 1.5rem; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem; }
+        .footer-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
+        .footer-logo img { height: 44px; object-fit: contain; }
+        .footer-logo-text { font-size: 1.2rem; font-weight: 800; color: var(--primary); }
+        .footer-desc { color: rgba(255,255,255,0.55); font-size: 0.92rem; line-height: 1.7; margin-bottom: 1.5rem; }
+        .social-row { display: flex; gap: 10px; }
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        .social-btn:hover { background: var(--primary); color: var(--secondary); transform: translateY(-3px); }
+        .footer-col h4 { color: var(--primary); font-size: 1rem; font-weight: 700; margin-bottom: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-links { display: flex; flex-direction: column; gap: 8px; }
+        .footer-links a { color: rgba(255,255,255,0.6); font-size: 0.92rem; transition: var(--transition); }
+        .footer-links a:hover { color: var(--primary); padding-left: 4px; }
+        .footer-hours p { color: rgba(255,255,255,0.6); font-size: 0.92rem; margin-bottom: 4px; }
+        .footer-hours .open { color: #4caf50; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 0.85rem; }
+        .footer-bottom a { color: rgba(255,255,255,0.4); }
+        .footer-bottom a:hover { color: var(--primary); }
+
+        /* ===== LIVE CHAT WIDGET ===== */
+        .chat-widget {
+            position: fixed;
+            bottom: 110px;
+            right: 25px;
+            z-index: 9990;
+        }
+        .chat-btn {
+            width: 54px;
+            height: 54px;
+            background: var(--secondary);
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        }
+        .chat-btn:hover { transform: scale(1.1); background: var(--primary); }
+        .chat-btn:hover i { color: var(--secondary); }
+        .chat-btn i { font-size: 1.2rem; color: var(--primary); transition: var(--transition); }
+        .chat-bubble {
+            position: absolute;
+            bottom: 62px;
+            right: 0;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 12px 16px;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+            white-space: nowrap;
+            font-size: 0.85rem;
+            color: var(--text);
+            border-left: 3px solid var(--primary);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: var(--transition);
+            pointer-events: none;
+        }
+        .chat-widget:hover .chat-bubble { opacity: 1; transform: translateY(0); }
+
+        /* ===== SCROLL REVEAL ===== */
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 992px) {
+            .about-grid, .contact-grid { grid-template-columns: 1fr; }
+            .about-img-wrap { order: -1; }
+            .about-img-wrap img { height: 380px; }
+        }
+        @media (max-width: 768px) {
+            .header-inner { position: relative; }
+            nav { display: none; }
+            nav.open { display: flex; flex-direction: column; position: absolute; top: 76px; left: 0; width: 100%; background: var(--secondary); padding: 1.5rem; z-index: 800; }
+            nav.open ul { flex-direction: column; gap: 1rem; }
+            .mobile-menu-btn { display: flex; }
+            .sticky-mobile-cta { display: flex; }
+            .fab-phone { bottom: 90px; }
+            .chat-widget { bottom: 170px; }
+            .toast-container { bottom: 100px; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .about-stats { grid-template-columns: repeat(3,1fr); }
+            .roi-result-detail { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 576px) {
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .hero-buttons .cta-button { width: 260px; justify-content: center; }
+            .trust-bar-inner { gap: 1rem; flex-direction: column; }
+            .case-results { flex-wrap: wrap; }
+            .price-card.popular { transform: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== COOKIE BANNER ===== -->
+<div class="cookie-banner" id="cookieBanner">
+    <div class="cookie-text">
+        🍪 Ta strona używa plików cookie, aby zapewnić najlepsze doświadczenie. Kontynuując korzystanie, zgadzasz się z naszą <a href="#">Polityką Prywatności</a> (RODO).
+    </div>
+    <div style="display:flex;gap:10px;flex-shrink:0;">
+        <button class="cookie-btn cookie-decline" id="cookieDecline">Odrzuć</button>
+        <button class="cookie-btn cookie-accept" id="cookieAccept">Akceptuj</button>
+    </div>
+</div>
+
+<!-- ===== EXIT INTENT POPUP ===== -->
+<div class="popup-overlay" id="exitPopup">
+    <div class="popup-box">
+        <button class="popup-close" id="popupClose">✕</button>
+        <div class="popup-header">
+            <div class="popup-emoji">✂️</div>
+            <h3>Nie wychodź bez prezentu!</h3>
+        </div>
+        <div class="popup-body">
+            <p class="popup-offer">Odbierz <span>10% ZNIŻKI</span><br>na pierwsze strzyżenie</p>
+            <p class="popup-sub">Zostaw numer telefonu, oddzwonimy i umówimy Cię na wizytę w najlepszym terminie.</p>
+            <div class="popup-form">
+                <input type="tel" placeholder="Twój numer telefonu" id="popupPhone">
+                <button class="cta-button" style="animation:none;white-space:nowrap" onclick="submitPopup()">Zadzwoń do mnie</button>
+            </div>
+            <p class="popup-skip" onclick="closePopup()">Nie, dziękuję – rezygnuję ze zniżki</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===== FLOATING PHONE BUTTON ===== -->
+<a href="tel:730088826" class="fab-phone" aria-label="Zadzwoń do nas">
+    <i class="fas fa-phone"></i>
+</a>
+<div class="fab-label">730 088 826</div>
+
+<!-- ===== LIVE CHAT WIDGET ===== -->
+<div class="chat-widget">
+    <div class="chat-bubble">Masz pytanie? Napisz do nas!</div>
+    <div class="chat-btn" onclick="openChat()">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+</div>
+
+<!-- ===== SOCIAL PROOF TOASTS ===== -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ===== STICKY MOBILE CTA ===== -->
+<div class="sticky-mobile-cta">
+    <a href="tel:730088826" class="sticky-cta-call"><i class="fas fa-phone" style="margin-right:6px"></i>Zadzwoń</a>
+    <a href="#kontakt" class="sticky-cta-book"><i class="fas fa-calendar-alt" style="margin-right:6px"></i>Umów wizytę</a>
+</div>
+
+<!-- ===== HEADER ===== -->
+<header>
+    <div class="container">
+        <div class="header-inner">
+            <div class="logo">
+                <img src="Logo z insta.png" alt="Barber Benns Logo" onerror="this.style.display='none'">
+                <span class="logo-text">BARBER BENNS</span>
+            </div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">Start</a></li>
+                    <li><a href="#o-nas">O nas</a></li>
+                    <li><a href="#uslugi">Usługi</a></li>
+                    <li><a href="#cennik">Cennik</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#opinie">Opinie</a></li>
+                    <li><a href="#kontakt" class="nav-cta">Umów się</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="hero-badge">⭐ #1 Barber Shop w Nowym Sączu</div>
+        <h1>Wyjdź z Salonu <span>Przystojniejszy</span> niż Wszedłeś</h1>
+        <p>Precyzyjne strzyżenie, perfekcyjna broda, mistrzowska pielęgnacja – wszystko w jednym miejscu. Umów się online w 60 sekund.</p>
+        <div class="hero-buttons">
+            <a href="#kontakt" class="cta-button"><i class="fas fa-calendar-alt"></i> Umów wizytę – To proste!</a>
+            <a href="tel:730088826" class="cta-button outline"><i class="fas fa-phone"></i> 730 088 826</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== TRUST BAR ===== -->
+<div class="trust-bar">
+    <div class="container">
+        <div class="trust-bar-inner">
+            <div class="trust-item"><i class="fas fa-star"></i> 5.0 z 5.0 – 120+ opinii Google</div>
+            <div class="trust-item"><i class="fas fa-scissors"></i> 1500+ zadowolonych klientów</div>
+            <div class="trust-item"><i class="fas fa-award"></i> 5 lat doświadczenia</div>
+            <div class="trust-item"><i class="fas fa-map-marker-alt"></i> Wałowa 6, Nowy Sącz</div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== O NAS / FOUNDER STORY ===== -->
+<section class="section-pad" id="o-nas">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-img-wrap reveal">
+                <img src="https://images.unsplash.com/photo-1599351431202-1e0f013789ae?auto=format&fit=crop&w=800&q=80" alt="Barber Benns salon">
+                <div class="about-badge-float">
+                    <div class="badge-num">5★</div>
+                    <div class="badge-txt">Średnia ocena</div>
+                </div>
+            </div>
+            <div class="about-text reveal">
+                <h2>Historia <span>Barber Benns</span></h2>
+                <blockquote class="founder-quote">
+                    „Zaczynałem od pasji. Dziś każde strzyżenie to dla mnie sztuka – chcę, żebyś wychodził stąd z podniesioną głową i uśmiechem." – Benn, założyciel
+                </blockquote>
+                <p>Barber Benns to nie zwykły salon fryzjerski – to miejsce, gdzie każdy mężczyzna dostaje to, na co zasługuje: profesjonalną obsługę, świetną atmosferę i fryzurę, którą wszyscy zauważą.</p>
+                <p>Nasz zespół to kreatywni specjaliści z pasją do męskiego grooming'u. Stosujemy wyłącznie sprawdzone, profesjonalne produkty i najnowsze techniki strzyżenia.</p>
+                <p>Elastyczny grafik, szybka rezerwacja online i zero czekania – wiemy, że Twój czas jest cenny.</p>
+                <div class="about-stats">
+                    <div class="stat-box">
+                        <div class="stat-num">1500+</div>
+                        <div class="stat-label">Klientów</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-num">5 lat</div>
+                        <div class="stat-label">Na rynku</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-num">120+</div>
+                        <div class="stat-label">Opinii 5★</div>
+                    </div>
+                </div>
+                <a href="#kontakt" class="cta-button">Umów się teraz <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== USŁUGI ===== -->
+<section class="section-pad services-section" id="uslugi">
+    <div class="container">
+        <div class="section-title reveal">
+            <h2>Nasze Usługi</h2>
+            <p>Każda usługa to precyzja, styl i dbałość o detale – bo zasługujesz na to, co najlepsze.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-cut"></i></div>
+                <h3>Strzyżenie Klasyczne</h3>
+                <p>Nowoczesne trendy i klasyczna precyzja. Strzyżenie dopasowane do kształtu twarzy i stylu życia.</p>
+                <div class="service-price">od 60 zł</div>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-male"></i></div>
+                <h3>Strzyżenie + Broda</h3>
+                <p>Komplet: fryzura i broda w jednej wizycie. Wyjdź idealnie dopracowany od głowy do szyi.</p>
+                <div class="service-price">od 90 zł</div>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-spa"></i></div>
+                <h3>Pielęgnacja Brody</h3>
+                <p>Kształtowanie, przycinanie i pielęgnacja brody z maskami i regeneracją. Broda jak z okładki.</p>
+                <div class="service-price">od 45 zł</div>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-shower"></i></div>
+                <h3>Golenie na Mokro</h3>
+                <p>Klasyczne golenie brzytwą safety razor z gorącym ręcznikiem i pianką. Czyste, gładkie, luksusowe.</p>
+                <div class="service-price">od 55 zł</div>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-tint"></i></div>
+                <h3>Koloryzacja</h3>
+                <p>Subtelna koloryzacja, przyciemnianie siwizny lub wyraziste zmiany koloru. Dobieramy odcień idealnie.</p>
+                <div class="service-price">od 80 zł</div>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-crown"></i></div>
+                <h3>Pakiet VIP Full</h3>
+                <p>Strzyżenie + broda + pielęgnacja + masaż głowy. Kompletna transformacja w jednej wizycie.</p>
+                <div class="service-price">od 130 zł</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CASE STUDIES ===== -->
+<section class="section-pad case-studies" id="realizacje">
+    <div class="container">
+        <div class="section-title section-dark reveal">
+            <h2>Efekty, Które Mówią Same Za Siebie</h2>
+            <p style="color:rgba(255,255,255,0.6)">Prawdziwe transformacje naszych klientów – liczby nie kłamią.</p>
+        </div>
+        <div class="case-studies-grid">
+            <div class="case-card reveal">
+                <div class="case-label">Przypadek #1 – Metamorfoza totalna</div>
+                <div class="case-title">Z nieuporządkowanego do prezentującego się profesjonalnie</div>
+                <div class="case-desc">Klient przyszedł przed rozmową o pracę. Wspólnie dobraliśmy fryzurę i styl brody odpowiedni do branży IT. Efekt? Robota zgarnięta.</div>
+                <div class="case-results">
+                    <div class="case-result-item">
+                        <div class="case-result-num">60 min</div>
+                        <div class="case-result-label">Czas wizyty</div>
+                    </div>
+                    <div class="case-result-item">
+                        <div class="case-result-num">100%</div>
+                        <div class="case-result-label">Satysfakcja</div>
+                    </div>
+                    <div class="case-result-item">
+                        <div class="case-result-num">Praca!</div>
+                        <div class="case-result-label">Efekt końcowy</div>
+                    </div>
+                </div>
+            </div>
+            <div class="case-card reveal">
+                <div class="case-label">Przypadek #2 – Regularna pielęgnacja</div>
+                <div class="case-title">Klient wracający co 3 tygodnie przez 2 lata</div>
+                <div class="case-desc">Pan Krzysztof przychodzi regularnie od 2019 roku. Mówi, że odkąd zaczął u nas – znajomi pytają go, czy zmienił pracę albo schudł. A on tylko zmienił barbera.</div>
+                <div class="case-results">
+                    <div class="case-result-item">
+                        <div class="case-result-num">35+</div>
+                        <div class="case-result-label">Wizyt</div>
+                    </div>
+                    <div class="case-result-item">
+                        <div class="case-result-num">2 lata</div>
+                        <div class="case-result-label">Jako klient</div>
+                    </div>
+                    <div class="case-result-item">
+                        <div class="case-result-num">5★</div>
+                        <div class="case-result-label">Zawsze</div>
+                    </div>
+                </div>
+            </div>
+            <div class="case-card reveal">
+                <div class="case-label">Przypadek #3 – Ślub</div>
+                <div class="case-title">Przygotowanie pana młodego i drużbów</div>
+                <div class="case-desc">Obsłużyliśmy 4-osobową ekipę pana młodego w jeden ranek. Każdy wyglądał doskonale. Fotograf powiedział, że to jeden z lepiej wyglądających ślubów, które fotografował.</div>
+                <div class="case-results">
+                    <div class="case-result-item">
+                        <div class="case-result-num">4 os.</div>
+                        <div class="case-result-label">Obsłużonych</div>
+                    </div>
+                    <div class="case-result-item">
+                        <div class="case-result-num">3 godz.</div>
+                        <div class="case-result-label">Sesja</div>
+                    </div>
+                    <div class="case-result-item">
+                        <div class="case-result-num">❤️</div>
+                        <div class="case-result-label">Efekt</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="section-pad" id="cennik">
+    <div class="container">
+        <div class="section-title reveal">
+            <h2>Cennik</h2>
+            <p>Przejrzyste ceny, zero niespodzianek. Wybierz pakiet dopasowany do Ciebie.</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="price-card reveal">
+                <div class="price-plan">Pakiet</div>
+                <div class="price-name">BASIC</div>
+                <div class="price-amount"><sup>od </sup>60 zł</div>
+                <div class="price-period">za wizytę</div>
+                <ul class="price-features">
+                    <li><i class="fas fa-check"></i> Strzyżenie maszynką lub nożyczkami</li>
+                    <li><i class="fas fa-check"></i> Mycie włosów</li>
+                    <li><i class="fas fa-check"></i> Stylizacja po strzyżeniu</li>
+                    <li><i class="fas fa-check"></i> Konsultacja stylisty</li>
+                    <li><i class="fas fa-times" style="color:#ccc"></i> Broda</li>
+                    <li><i class="fas fa-times" style="color:#ccc"></i> Masaż głowy</li>
+                </ul>
+                <a href="#kontakt" class="cta-button outline" style="animation:none;width:100%;justify-content:center">Wybieram Basic</a>
+            </div>
+            <div class="price-card popular reveal">
+                <div class="popular-badge">HIT</div>
+                <div class="price-plan">Pakiet</div>
+                <div class="price-name">STANDARD</div>
+                <div class="price-amount"><sup>od </sup>90 zł</div>
+                <div class="price-period">za wizytę</div>
+                <ul class="price-features">
+                    <li><i class="fas fa-check"></i> Strzyżenie maszynką lub nożyczkami</li>
+                    <li><i class="fas fa-check"></i> Mycie włosów</li>
+                    <li><i class="fas fa-check"></i> Stylizacja po strzyżeniu</li>
+                    <li><i class="fas fa-check"></i> Konsultacja stylisty</li>
+                    <li><i class="fas fa-check"></i> Strzyżenie i kształtowanie brody</li>
+                    <li><i class="fas fa-times" style="color:#ccc"></i> Masaż głowy</li>
+                </ul>
+                <a href="#kontakt" class="cta-button" style="width:100%;justify-content:center">Wybieram Standard</a>
+            </div>
+            <div class="price-card reveal">
+                <div class="price-plan">Pakiet</div>
+                <div class="price-name">PREMIUM VIP</div>
+                <div class="price-amount"><sup>od </sup>130 zł</div>
+                <div class="price-period">za wizytę</div>
+                <ul class="price-features">
+                    <li><i class="fas fa-check"></i> Strzyżenie maszynką lub nożyczkami</li>
+                    <li><i class="fas fa-check"></i> Mycie włosów</li>
+                    <li><i class="fas fa-check"></i> Stylizacja po strzyżeniu</li>
+                    <li><i class="fas fa-check"></i> Konsultacja stylisty</li>
+                    <li><i class="fas fa-check"></i> Strzyżenie i kształtowanie brody</li>
+                    <li><i class="fas fa-check"></i> Relaksujący masaż głowy</li>
+                </ul>
+                <a href="#kontakt" class="cta-button outline" style="animation:none;width:100%;justify-content:center">Wybieram VIP</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ROI CALCULATOR ===== -->
+<section class="section-pad roi-section" id="kalkulator">
+    <div class="container">
+        <div class="section-title reveal">
+            <h2>Kalkulator Oszczędności</h2>
+            <p>Sprawdź, ile rocznie zaoszczędzisz wybierając regularną pielęgnację u nas zamiast droższych salonów.</p>
+        </div>
+        <div class="roi-calc reveal">
+            <div class="roi-sliders">
+                <div class="roi-field">
+                    <label>Ile razy w miesiącu chodzisz do barbera? <span id="visitsLabel">2x</span></label>
+                    <input type="range" id="visitsRange" min="1" max="6" value="2" oninput="calcROI()">
+                </div>
+                <div class="roi-field">
+                    <label>Ile płacisz teraz za strzyżenie? <span id="priceLabel">120 zł</span></label>
+                    <input type="range" id="priceRange" min="60" max="250" value="120" step="10" oninput="calcROI()">
+                </div>
+            </div>
+            <div class="roi-result">
+                <div class="roi-result-num" id="roiNum">720 zł</div>
+                <div class="roi-result-label">tyle możesz zaoszczędzić rocznie wybierając pakiet Standard u nas</div>
+                <div class="roi-result-detail">
+                    <div class="roi-detail-item">
+                        <div class="roi-detail-num" id="roiCurrent">2 880 zł</div>
+                        <div class="roi-detail-label">Obecne wydatki / rok</div>
+                    </div>
+                    <div class="roi-detail-item">
+                        <div class="roi-detail-num" id="roiWithUs">2 160 zł</div>
+                        <div class="roi-detail-label">U nas / rok (Standard)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== OPINIE ===== -->
+<section class="section-pad testimonials-section section-dark" id="opinie">
+    <div class="container">
+        <div class="section-title reveal">
+            <h2>Co mówią nasi klienci</h2>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal">
+                <div class="rating">★★★★★</div>
+                <p class="testimonial-text">„Nigdy nie korzystałem z usług lepszego barbera, a zwiedziłem ich multum. Luźna i przyjazna atmosfera, przez co można się rozluźnić. Strzyżenie top! Inne usługi również. Mogę z czystym sumieniem polecić!"</p>
+                <div class="client-info">
+                    <div class="client-avatar">B</div>
+                    <div>
+                        <div class="client-name">Bartek Zieliński</div>
+                        <div class="client-result">Stały klient od 2021 r.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="rating">★★★★★</div>
+                <p class="testimonial-text">„Miejsce z atmosferą, której nie da się podrobić. Cięcie zawsze na piątkę z plusem. Wychodzę stamtąd co razem z uśmiechem i z przekonaniem, że moje włosy są w najlepszych rękach w mieście."</p>
+                <div class="client-info">
+                    <div class="client-avatar">K</div>
+                    <div>
+                        <div class="client-name">Kamil M.</div>
+                        <div class="client-result">Klient od 2020 r.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="rating">★★★★★</div>
+                <p class="testimonial-text">„Polecam! Jeden minus – ciężko się odpędzić od kobiet po strzyżeniu u Benns Barber 😄 Serio, efekt jest naprawdę niesamowity i widoczny od razu. Wracam regularnie!"</p>
+                <div class="client-info">
+                    <div class="client-avatar">E</div>
+                    <div>
+                        <div class="client-name">Eryk Kanciano</div>
+                        <div class="client-result">Stały klient</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="rating">★★★★★</div>
+                <p class="testimonial-text">„Przyszedłem pierwszy raz i od razu poczułem, że to jest TO. Broda wystrzyżona idealnie, fryzura na spot. Polecam wszystkim chłopakom z Nowego Sącza – to jest właśnie ten poziom!"</p>
+                <div class="client-info">
+                    <div class="client-avatar">M</div>
+                    <div>
+                        <div class="client-name">Marek W.</div>
+                        <div class="client-result">Efekt: +5 randek w miesiącu</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="rating">★★★★★</div>
+                <p class="testimonial-text">„Strzyżenie na ślub – 4 osoby, 1 ranek. Wszystko sprawnie, profesjonalnie i w doskonałej atmosferze. Fotograf robił komplementy. Dziękuję Barber Benns za ten dzień!"</p>
+                <div class="client-info">
+                    <div class="client-avatar">P</div>
+                    <div>
+                        <div class="client-name">Piotr (Pan Młody)</div>
+                        <div class="client-result">Przygotowanie ślubne dla 4 os.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="rating">★★★★★</div>
+                <p class="testimonial-text">„Znalazłem Barber Benns przez Instagram i od razu się zapisałem. Termin w 5 minut, obsługa perfekcyjna, efekt powyżej oczekiwań. Stałem się stałym klientem po pierwszej wizycie."</p>
+                <div class="client-info">
+                    <div class="client-avatar">T</div>
+                    <div>
+                        <div class="client-name">Tomasz K.</div>
+                        <div class="client-result">Klient od 2022 r.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PORTFOLIO ===== -->
+<section class="section-pad portfolio-section" id="galeria">
+    <div class="container">
+        <div class="section-title reveal">
+            <h2>Galeria Prac</h2>
+            <p>Każde cięcie to nasza wizytówka. Przejrzyj nasze realizacje.</p>
+        </div>
+        <div class="portfolio-filters reveal">
+            <button class="filter-btn active" data-filter="all">Wszystkie</button>
+            <button class="filter-btn" data-filter="strzyzenie">Strzyżenie</button>
+            <button class="filter-btn" data-filter="broda">Broda</button>
+            <button class="filter-btn" data-filter="salon">Salon</button>
+        </div>
+        <div class="portfolio-grid" id="portfolioGrid">
+            <div class="portfolio-item" data-cat="strzyzenie">
+                <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=600&q=80" alt="Strzyżenie klasyczne">
+                <div class="portfolio-overlay">
+                    <div><div class="portfolio-label">Strzyżenie klasyczne</div><div class="portfolio-cat">Strzyżenie</div></div>
+                </div>
+            </div>
+            <div class="portfolio-item" data-cat="broda">
+                <img src="https://images.unsplash.com/photo-1599351431202-1e0f013789ae?auto=format&fit=crop&w=600&q=80" alt="Pielęgnacja brody">
+                <div class="portfolio-overlay">
+                    <div><div class="portfolio-label">Pielęgnacja brody</div><div class="portfolio-cat">Broda</div></div>
+                </div>
+            </div>
+            <div class="portfolio-item" data-cat="strzyzenie">
+                <img src="https://images.unsplash.com/photo-1605497788048-08535e3da33a?auto=format&fit=crop&w=600&q=80" alt="Fade haircut">
+                <div class="portfolio-overlay">
+                    <div><div class="portfolio-label">Fade haircut</div><div class="portfolio-cat">Strzyżenie</div></div>
+                </div>
+            </div>
+            <div class="portfolio-item" data-cat="broda">
+                <img src="https://images.unsplash.com/photo-1598948330349-47b62d8e9b3c?auto=format&fit=crop&w=600&q=80" alt="Stylizacja brody">
+                <div class="portfolio-overlay">
+                    <div><div class="portfolio-label">Stylizacja brody</div><div class="portfolio-cat">Broda</div></div>
+                </div>
+            </div>
+            <div class="portfolio-item" data-cat="salon">
+                <img src="https://images.unsplash.com/photo-1570699605323-598390f1c7a7?auto=format&fit=crop&w=600&q=80" alt="Nasz salon">
+                <div class="portfolio-overlay">
+                    <div><div class="portfolio-label">Nasz salon</div><div class="portfolio-cat">Salon</div></div>
+                </div>
+            </div>
+            <div class="portfolio-item" data-cat="strzyzenie">
+                <img src="https://images.unsplash.com/photo-1596722242579-3dd8a0e3383c?auto=format&fit=crop&w=600&q=80" alt="Nowoczesny undercut">
+                <div class="portfolio-overlay">
+                    <div><div class="portfolio-label">Nowoczesny undercut</div><div class="portfolio-cat">Strzyżenie</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section-pad faq-section" id="faq">
+    <div class="container">
+        <div class="section-title reveal">
+            <h2>Najczęstsze pytania</h2>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item reveal">
+                <div class="faq-question">Jak mogę umówić się na wizytę? <i class="fas fa-chevron-down faq-icon"></i></div>
+                <div class="faq-answer"><p>Możesz umówić się przez formularz na tej stronie, zadzwonić pod numer 730 088 826 lub napisać do nas na Instagramie @barber_benns. Staramy się odpowiadać w ciągu kilku minut.</p></div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question">Jak długo trwa wizyta? <i class="fas fa-chevron-down faq-icon"></i></div>
+                <div class="faq-answer"><p>Standardowe strzyżenie zajmuje ok. 30-45 minut. Pakiet z brodą to 60-75 minut. Pakiet VIP Premium – ok. 90 minut. Zawsze rezerwujemy czas z marginesem.</p></div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question">Czy muszę przynosić coś ze sobą? <i class="fas fa-chevron-down faq-icon"></i></div>
+                <div class="faq-answer"><p>Nie! Wszystkim zajmujemy się my. Możesz przynieść zdjęcie fryzury którą chcesz – to nam ułatwi pracę, ale to nie obowiązek. Doradzimy Ci najlepszy styl do Twojej twarzy.</p></div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question">Kiedy jesteście otwarci? <i class="fas fa-chevron-down faq-icon"></i></div>
+                <div class="faq-answer"><p>Aktualnie przyjmujemy w soboty: 09:00–18:00. Sprawdź nasze Instagram dla bieżących aktualizacji godzin lub zadzwoń, aby potwierdzić dostępność.</p></div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question">Czy obsługujecie grupy (np. ślub, event)? <i class="fas fa-chevron-down faq-icon"></i></div>
+                <div class="faq-answer"><p>Tak! Chętnie obsługujemy ekipy ślubne, imprezy firmowe czy grupy znajomych. Skontaktuj się z nami z wyprzedzeniem, aby zarezerwować odpowiedni blok czasowy.</p></div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question">Jak działa zniżka 10% dla nowych klientów? <i class="fas fa-chevron-down faq-icon"></i></div>
+                <div class="faq-answer"><p>Wystarczy, że przy rezerwacji wspomnisz, że to Twoja pierwsza wizyta lub że trafiłeś przez naszą stronę. Zniżka 10% dotyczy pierwszej wizyty dla każdego nowego klienta.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== KONTAKT ===== -->
+<section class="section-pad" id="kontakt" style="background:var(--white)">
+    <div class="container">
+        <div class="section-title reveal">
+            <h2>Umów się na wizytę</h2>
+            <p>Jeden formularz, kilka minut – i Twoja wizyta gotowa. Oddzwonimy w ciągu 2 godzin.</p>
+        </div>
+        <div class="contact-grid">
+            <div class="reveal">
+                <div class="contact-info">
+                    <h3>Znajdziesz nas tutaj</h3>
+                    <div class="contact-detail">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h4>Adres</h4>
+                            <p>Wałowa 6, 33-300 Nowy Sącz</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <h4>Telefon</h4>
+                            <p><a href="tel:730088826">730 088 826</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                        <div>
+                            <h4>Godziny otwarcia</h4>
+                            <p>Sobota: 09:00–18:00</p>
+                            <p style="color:var(--text-light);font-size:0.9rem">Pon.–Pt. i Ndz.: zamknięte</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-icon"><i class="fab fa-instagram"></i></div>
+                        <div>
+                            <h4>Instagram</h4>
+                            <p><a href="https://www.instagram.com/barber_benns" target="_blank" rel="noopener">@barber_benns</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2538.710402807585!2d20.69843931585264!3d49.62144197939635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4715fa157d556faf%3A0x1c2f8e6e6b5e6b0!2sWa%C5%82owa%206%2C%2033-300%20Nowy%20S%C4%85cz!5e0!3m2!1spl!2spl!4v1650000000000!5m2!1spl!2spl" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Lokalizacja Barber Benns"></iframe>
+                </div>
+            </div>
+            <div class="reveal">
+                <div class="contact-form-box">
+                    <h3>Rezerwacja wizyty</h3>
+                    <form id="bookingForm" onsubmit="submitForm(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fname">Imię i nazwisko *</label>
+                                <input type="text" id="fname" placeholder="Jan Kowalski" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="fphone">Telefon *</label>
+                                <input type="tel" id="fphone" placeholder="730 000 000" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="fservice">Usługa *</label>
+                            <select id="fservice" required>
+                                <option value="" disabled selected>Wybierz usługę</option>
+                                <option value="basic">Strzyżenie Basic – od 60 zł</option>
+                                <option value="standard">Strzyżenie + Broda Standard – od 90 zł</option>
+                                <option value="premium">Pakiet VIP Premium – od 130 zł</option>
+                                <option value="broda">Pielęgnacja brody – od 45 zł</option>
+                                <option value="golenie">Golenie na mokro – od 55 zł</option>
+                                <option value="koloryzacja">Koloryzacja – od 80 zł</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fdate">Preferowana data *</label>
+                                <input type="date" id="fdate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ftime">Godzina</label>
+                                <select id="ftime">
+                                    <option value="">Dowolna</option>
+                                    <option value="09:00">09:00</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="12:00">12:00</option>
+                                    <option value="13:00">13:00</option>
+                                    <option value="14:00">14:00</option>
+                                    <option value="15:00">15:00</option>
+                                    <option value="16:00">16:00</option>
+                                    <option value="17:00">17:00</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="fnotes">Dodatkowe informacje</label>
+                            <textarea id="fnotes" placeholder="Np. preferowany styl, specjalne życzenia..."></textarea>
+                        </div>
+                        <button type="submit" class="cta-button" style="width:100%;justify-content:center">
+                            <i class="fas fa-calendar-check"></i> Potwierdź rezerwację
+                        </button>
+                    </form>
+                    <p style="margin-top:1rem;font-size:0.85rem;color:var(--text-light);text-align:center">Oddzwonimy w ciągu 2 godzin, aby potwierdzić termin.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo">
+                    <img src="Logo z insta.png" alt="Barber Benns" onerror="this.style.display='none'">
+                    <span class="footer-logo-text">BARBER BENNS</span>
+                </div>
+                <p class="footer-desc">Fryzjer Męski w Nowym Sączu. Precyzyjne strzyżenie, pielęgnacja brody i luźna atmosfera – tu zawsze wyglądasz na świeżo.</p>
+                <div class="social-row">
+                    <a href="https://www.instagram.com/barber_benns" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/48730088826" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="tel:730088826" class="social-btn" aria-label="Telefon"><i class="fas fa-phone"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Menu</h4>
+                <div class="footer-links">
+                    <a href="#home">Strona główna</a>
+                    <a href="#o-nas">O nas</a>
+                    <a href="#uslugi">Usługi</a>
+                    <a href="#cennik">Cennik</a>
+                    <a href="#galeria">Galeria</a>
+                    <a href="#opinie">Opinie</a>
+                    <a href="#kontakt">Kontakt</a>
+                </div>
+            </div>
+            <div class="footer-col footer-hours">
+                <h4>Godziny</h4>
+                <p>Poniedziałek–Piątek</p>
+                <p style="margin-bottom:8px;color:rgba(255,255,255,0.4)">Zamknięte</p>
+                <p>Sobota</p>
+                <p class="open">09:00–18:00</p>
+                <p style="margin-top:8px">Niedziela</p>
+                <p style="color:rgba(255,255,255,0.4)">Zamknięte</p>
+            </div>
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <div class="footer-links">
+                    <a href="tel:730088826"><i class="fas fa-phone" style="margin-right:6px;color:var(--primary)"></i>730 088 826</a>
+                    <a href="https://www.instagram.com/barber_benns" target="_blank"><i class="fab fa-instagram" style="margin-right:6px;color:var(--primary)"></i>@barber_benns</a>
+                    <a href="#"><i class="fas fa-map-marker-alt" style="margin-right:6px;color:var(--primary)"></i>Wałowa 6, Nowy Sącz</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Barber Benns. Wszelkie prawa zastrzeżone.</p>
+            <div style="display:flex;gap:1rem;flex-wrap:wrap">
+                <a href="#">Polityka prywatności</a>
+                <a href="#">Regulamin</a>
+                <a href="#">RODO</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+// ===== MOBILE MENU =====
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mainNav = document.getElementById('mainNav');
+mobileMenuBtn.addEventListener('click', () => {
+    mainNav.classList.toggle('open');
+});
+document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', () => mainNav.classList.remove('open'));
+});
+
+// ===== SMOOTH SCROLL =====
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+});
+
+// ===== COOKIE BANNER =====
+(function() {
+    if (!localStorage.getItem('cookieConsent')) {
+        setTimeout(() => document.getElementById('cookieBanner').classList.add('show'), 1500);
+    }
+    document.getElementById('cookieAccept').addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'accepted');
+        document.getElementById('cookieBanner').style.transform = 'translateY(100%)';
+    });
+    document.getElementById('cookieDecline').addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'declined');
+        document.getElementById('cookieBanner').style.transform = 'translateY(100%)';
+    });
+})();
+
+// ===== EXIT POPUP =====
+let popupShown = false;
+function showPopup() {
+    if (!popupShown && !sessionStorage.getItem('popupShown')) {
+        popupShown = true;
+        document.getElementById('exitPopup').classList.add('show');
+    }
+}
+function closePopup() {
+    document.getElementById('exitPopup').classList.remove('show');
+    sessionStorage.setItem('popupShown', '1');
+}
+function submitPopup() {
+    const phone = document.getElementById('popupPhone').value;
+    if (phone.length >= 9) {
+        alert('Dziękujemy! Oddzwonimy do Ciebie najszybciej jak to możliwe i umówimy wizytę ze zniżką 10%!');
+        closePopup();
+    } else {
+        document.getElementById('popupPhone').focus();
+    }
+}
+document.getElementById('popupClose').addEventListener('click', closePopup);
+document.getElementById('exitPopup').addEventListener('click', e => { if (e.target === e.currentTarget) closePopup(); });
+document.addEventListener('mouseleave', e => { if (e.clientY < 20) showPopup(); });
+setTimeout(() => { if (!popupShown) showPopup(); }, 45000);
+
+// ===== SOCIAL PROOF TOASTS =====
+const socialMessages = [
+    { text: 'Klient z <strong>Nowego Sącza</strong> właśnie się umówił', icon: '📞', time: 'Przed chwilą' },
+    { text: '<strong>Marek</strong> ocenił wizytę na ★★★★★', icon: '⭐', time: '3 min temu' },
+    { text: 'Klient z <strong>Krakowa</strong> zarezerwował Pakiet VIP', icon: '✂️', time: '7 min temu' },
+    { text: '<strong>12 osób</strong> przejrzało tę stronę dziś', icon: '👀', time: 'Teraz' },
+    { text: '<strong>Piotr</strong> wrócił na kolejną wizytę', icon: '🔄', time: '12 min temu' },
+    { text: 'Nowa opinia Google ★★★★★ od <strong>Bartka</strong>', icon: '📲', time: '18 min temu' },
+];
+let toastIdx = 0;
+function showToast() {
+    const msg = socialMessages[toastIdx % socialMessages.length];
+    toastIdx++;
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerHTML = `<div class="toast-icon">${msg.icon}</div><div class="toast-text">${msg.text}<div class="toast-time">${msg.time}</div></div>`;
+    const container = document.getElementById('toastContainer');
+    container.appendChild(toast);
+    setTimeout(() => { toast.style.opacity = '0'; toast.style.transition = 'opacity 0.4s'; setTimeout(() => toast.remove(), 400); }, 4500);
+}
+setTimeout(() => { showToast(); setInterval(showToast, 9000); }, 5000);
+
+// ===== PORTFOLIO FILTERS =====
+document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        const filter = this.dataset.filter;
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            if (filter === 'all' || item.dataset.cat === filter) {
+                item.classList.remove('hidden');
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+    });
+});
+
+// ===== ROI CALCULATOR =====
+function calcROI() {
+    const visits = parseInt(document.getElementById('visitsRange').value);
+    const price = parseInt(document.getElementById('priceRange').value);
+    const ourPrice = 90;
+    document.getElementById('visitsLabel').textContent = visits + 'x';
+    document.getElementById('priceLabel').textContent = price + ' zł';
+    const currentYear = visits * price * 12;
+    const ourYear = visits * ourPrice * 12;
+    const savings = currentYear - ourYear;
+    document.getElementById('roiNum').textContent = (savings > 0 ? savings : 0) + ' zł';
+    document.getElementById('roiCurrent').textContent = currentYear + ' zł';
+    document.getElementById('roiWithUs').textContent = ourYear + ' zł';
+}
+calcROI();
+
+// ===== FAQ ACCORDION =====
+document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+        const item = question.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+    });
+});
+
+// ===== CONTACT FORM =====
+function submitForm(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type=submit]');
+    btn.textContent = 'Wysyłanie...';
+    btn.disabled = true;
+    setTimeout(() => {
+        btn.innerHTML = '<i class="fas fa-check"></i> Wysłano! Oddzwonimy wkrótce.';
+        btn.style.background = '#4caf50';
+        btn.style.borderColor = '#4caf50';
+        btn.style.animation = 'none';
+        e.target.reset();
+    }, 1500);
+}
+
+// ===== SCROLL REVEAL =====
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ===== LIVE CHAT =====
+function openChat() {
+    window.open('https://wa.me/48730088826?text=Hej%2C%20chciałbym%20umówić%20się%20na%20wizytę%20u%20Barber%20Benns!', '_blank');
+}
+
+// ===== DATE MIN =====
+const dateInput = document.getElementById('fdate');
+if (dateInput) {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    dateInput.min = tomorrow.toISOString().split('T')[0];
+}
+</script>
+</body>
+</html>
