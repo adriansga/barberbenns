@@ -170,8 +170,8 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.9)),
-                        url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+                        url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
             color: var(--white);
             position: relative;
         }
@@ -891,6 +891,19 @@
             .case-results { flex-wrap: wrap; }
             .price-card.popular { transform: none; }
         }
+        
+        /* ===== SETMORE BOOKING BUTTON ===== */
+        #setmore-button {
+            background: var(--white) !important;
+            color: #000 !important;
+            border: 2px solid var(--white) !important;
+            box-shadow: 0 6px 25px rgba(255,255,255,0.3) !important;
+        }
+        #setmore-button:hover {
+            background: #000 !important;
+            color: var(--white) !important;
+            box-shadow: 0 15px 40px rgba(255,255,255,0.5) !important;
+        }
     </style>
 </head>
 <body>
@@ -926,6 +939,14 @@
     </div>
 </div>
 
+<!-- ===== SETMORE BOOKING WIDGET ===== -->
+<script type="text/javascript">
+    function openSetmore() {
+        // Barber Benns Setmore booking page
+        window.open('https://barberbebtb.setmore.com/strateg', '_blank');
+    }
+</script>
+
 <!-- ===== FLOATING PHONE BUTTON ===== -->
 <a href="tel:730088826" class="fab-phone" aria-label="Zadzwoń do nas">
     <i class="fas fa-phone"></i>
@@ -946,7 +967,7 @@
 <!-- ===== STICKY MOBILE CTA ===== -->
 <div class="sticky-mobile-cta">
     <a href="tel:730088826" class="sticky-cta-call"><i class="fas fa-phone" style="margin-right:6px"></i>Zadzwoń</a>
-    <a href="#kontakt" class="sticky-cta-book"><i class="fas fa-calendar-alt" style="margin-right:6px"></i>Umów wizytę</a>
+    <a href="#" class="sticky-cta-book" onclick="openSetmore(); return false;"><i class="fas fa-calendar-alt" style="margin-right:6px"></i>Umów wizytę</a>
 </div>
 
 <!-- ===== HEADER ===== -->
@@ -965,7 +986,7 @@
                     <li><a href="#cennik">Cennik</a></li>
                     <li><a href="#galeria">Galeria</a></li>
                     <li><a href="#opinie">Opinie</a></li>
-                    <li><a href="#kontakt" class="nav-cta">Umów się</a></li>
+                    <li><a href="#" class="nav-cta" onclick="openSetmore(); return false;"><i class="fas fa-calendar-alt"></i> Umów się</a></li>
                 </ul>
             </nav>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
@@ -1005,7 +1026,7 @@
     <div class="container">
         <div class="about-grid">
             <div class="about-img-wrap reveal">
-                <img src="https://images.unsplash.com/photo-1599351431202-1e0f013789ae?auto=format&fit=crop&w=800&q=80" alt="Barber Benns salon">
+                <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=800&q=80" alt="Barber Benns salon" onerror="this.src='https://images.unsplash.com/photo-1599351431202-1e0f013789ae?auto=format&fit=crop&w=800&q=80'">
                 <div class="about-badge-float">
                     <div class="badge-num">5★</div>
                     <div class="badge-txt">Średnia ocena</div>
@@ -1342,13 +1363,13 @@
         </div>
         <div class="portfolio-grid" id="portfolioGrid">
             <div class="portfolio-item" data-cat="strzyzenie">
-                <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=600&q=80" alt="Strzyżenie klasyczne">
+                <img src="https://images.unsplash.com/photo-1593701461250-d718b947454c?auto=format&fit=crop&w=600&q=80" alt="Strzyżenie klasyczne" onerror="this.src='https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=600&q=80'">
                 <div class="portfolio-overlay">
                     <div><div class="portfolio-label">Strzyżenie klasyczne</div><div class="portfolio-cat">Strzyżenie</div></div>
                 </div>
             </div>
             <div class="portfolio-item" data-cat="broda">
-                <img src="https://images.unsplash.com/photo-1599351431202-1e0f013789ae?auto=format&fit=crop&w=600&q=80" alt="Pielęgnacja brody">
+                <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=600&q=80" alt="Pielęgnacja brody" onerror="this.src='https://images.unsplash.com/photo-1599351431202-1e0f013789ae?auto=format&fit=crop&w=600&q=80'">
                 <div class="portfolio-overlay">
                     <div><div class="portfolio-label">Pielęgnacja brody</div><div class="portfolio-cat">Broda</div></div>
                 </div>
@@ -1375,6 +1396,30 @@
                 <img src="https://images.unsplash.com/photo-1596722242579-3dd8a0e3383c?auto=format&fit=crop&w=600&q=80" alt="Nowoczesny undercut">
                 <div class="portfolio-overlay">
                     <div><div class="portfolio-label">Nowoczesny undercut</div><div class="portfolio-cat">Strzyżenie</div></div>
+                </div>
+            </div>
+            <div class="portfolio-item" data-cat="strzyzenie">
+                <img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?auto=format&fit=crop&w=600&q=80" alt="Barber przy pracy" onerror="this.src='https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=600&q=80'">
+                <div class="portfolio-overlay">
+                    <div><div class="portfolio-label">Barber przy pracy</div><div class="portfolio-cat">Strzyżenie</div></div>
+                </div>
+            </div>
+            <div class="portfolio-item" data-cat="salon">
+                <img src="https://images.unsplash.com/photo-1534353436294-0dbd4bdac845?auto=format&fit=crop&w=600&q=80" alt="Wnętrze zakładu" onerror="this.src='https://images.unsplash.com/photo-1570699605323-598390f1c7a7?auto=format&fit=crop&w=600&q=80'">
+                <div class="portfolio-overlay">
+                    <div><div class="portfolio-label">Wnętrze zakładu</div><div class="portfolio-cat">Salon</div></div>
+                </div>
+            </div>
+            <div class="portfolio-item" data-cat="broda">
+                <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=600&q=80" alt="Golenie brzytwą" onerror="this.src='https://images.unsplash.com/photo-1599351431202-1e0f013789ae?auto=format&fit=crop&w=600&q=80'">
+                <div class="portfolio-overlay">
+                    <div><div class="portfolio-label">Golenie brzytwą</div><div class="portfolio-cat">Broda</div></div>
+                </div>
+            </div>
+            <div class="portfolio-item" data-cat="strzyzenie">
+                <img src="https://images.unsplash.com/photo-1512690459411-b9245aed614b?auto=format&fit=crop&w=600&q=80" alt="Męskie strzyżenie" onerror="this.src='https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=600&q=80'">
+                <div class="portfolio-overlay">
+                    <div><div class="portfolio-label">Męskie strzyżenie</div><div class="portfolio-cat">Strzyżenie</div></div>
                 </div>
             </div>
         </div>
